@@ -1,6 +1,9 @@
 import numpy as np
 
 def initialize_parameters(n_x):
+    """
+    get n_x as the number of features and initialize W and b randomly and output dictionary that contains W and b
+    """
     W = np.random.randn(n_x, 1) * 0.001
     b = 0
 
@@ -10,6 +13,9 @@ def initialize_parameters(n_x):
     return paramters
 
 def forward_propagation(X, parameters):
+    """
+    Z = W.T * X + b
+    """
 
     W = parameters['W']
     b = parameters['b']
@@ -23,7 +29,9 @@ def forward_propagation(X, parameters):
     return Z
 
 def cost(Z, Y):
-
+    """
+    compute the square loss
+    """
     m = Z.shape[1]
 
     cost = 1/(2*m) * np.sum(np.square(Z - Y))
@@ -48,6 +56,10 @@ def back_propagation(X, Y, Z):
     return cache
 
 def model(X, Y, learning_rate= 0.009, epoch=5):
+    """
+    X : input with shape of (n_x, m) that n_x is the number of features and m is the number of training examples
+    Y : output with shape of (1, m) that m is the number of training examples
+    """
 
     n_x = X.shape[0]
     m = X.shape[1]
